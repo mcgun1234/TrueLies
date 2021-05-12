@@ -130,7 +130,7 @@ module.exports = function(app, Book, Character, Actor, Movie)
                         movie.title = book.title;
                         movie.author = book.author;
                         movie.character = char.name;
-                        Actor.findOne({gender:char.gender,age:char.age,persontype:character.persontype}, function(err, actor) {
+                        Actor.findOne({gender:char.gender,age:char.age,persontype:char.persontype}, function(err, actor) {
                             if (err) {
                                 console.log(err);
                             }
