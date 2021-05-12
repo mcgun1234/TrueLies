@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+
+    <form method="post">
+        <div class="form-group" style="text-align:center;">
+            <h1>배우 정보 입력</h1>
+            <br>
+            <label>이름 : <input type="text" name="name" required /></label>
+            <br><br>
+            <label>성별 :
+            <select name="gender">
+                <option>남성</option>
+                <option>여성</option>
+            </select></label>
+            <br><br>
+            <label>연령대 :
+            <select name="age">
+                <option>어린이</option>
+                <option>청소년</option>
+                <option>성인</option>
+                <option>중년</option>
+                <option>노인</option>
+            </select></label>
+            <br><br>
+            <label>성격유형 :
+            <select name="persontype">
+                <option>평균형</option>
+                <option>자기중심적</option>
+                <option>내성적</option>
+                <option>롤모델형</option>
+            </select></label>
+            <br><br>
+            <input class="btn btn-primary btn-lg" type="submit" value="배우 저장">
+        </div>
+    </form>
+</body>
+</html>

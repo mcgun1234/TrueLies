@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+
+    <div style="text-align:center;">
+        <h1>책 상세정보</h1>
+        <br>
+        <h2>제목 : <%= book.title %></h2>
+        <h2>작가 : <%= book.author %></h2>
+        <br>
+        <input type="button" class="btn btn-primary btn-lg" value="영화 만들기" onclick="location.href='../../movies/<%= book._id %>' ">
+        <hr>
+        <h1>등장인물 상세정보</h1>
+        <% character.forEach(function(character) { %>
+            <br>
+            <h2>이름 : <%= character.name %></h2>
+            <h2>성별 : <%= character.gender %></h2>
+            <h2>연령대 : <%= character.age %></h2>
+            <h2>성격 : <%= character.persontype %></h2>
+            <br><br>
+        <% }) %> 
+        <input type="button" class="btn btn-default btn-lg" value="책 삭제" onclick="var con_test = confirm('정말 삭제하시겠습니까?');if(con_test == true){location.href='/books/delete/<%= book._id %>'}">
+        <br><br><br>
+    </div>
+</body>
+</html>

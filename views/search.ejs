@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+    
+    <div id="booklist">
+        <h2 class="text-center">검색 결과</h2>
+        <br>
+        <div class="row" style="text-align:center;">
+            <% booklist.forEach(function(book) { %>
+                <div class="col-md-3" style="cursor:pointer;">
+                    <img src="../images/bookcover.png" onclick="location.href='/books/detail/<%= book._id %>'">
+                    <br>
+                    <h2><%= book.title %></h2>
+                    <h3><%= book.author %></h3>
+                    <br><br>
+                </div>
+            <% }) %> 
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+    <script>
+        function showbook() {
+            document.getElementById('booklist').style.display="block";
+            document.getElementById('book').style.border="1px solid black";
+            document.getElementById('actorlist').style.display="none";
+            document.getElementById('actor').style.border="none";
+        }
+        function showactor() {
+            document.getElementById('booklist').style.display="none";
+            document.getElementById('book').style.border="none";
+            document.getElementById('actorlist').style.display="block";
+            document.getElementById('actor').style.border="1px solid black";
+        }
+    </script>
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+    <div class="row" style="text-align:center;">
+        <div class="col-md-1"></div>
+        <div id="book" class="col-md-5" onclick="showbook();" style="cursor:pointer;">
+            <h2>책 목록</h2>
+        </div>
+        <div id="actor" class="col-md-5" onclick="showactor();" style="cursor:pointer;">
+            <h2>배우 목록</h2>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <hr>
+    <div id="booklist">
+        <h2 class="text-center">현재 True Lies에 업로드된 책 목록</h2>
+        <br>
+        <div class="row" style="text-align:center;">
+            <% booklist.forEach(function(book) { %>
+                <div class="col-md-3" style="cursor:pointer;">
+                    <img src="images/bookcover.png" onclick="location.href='/books/detail/<%= book._id %>'">
+                    <br>
+                    <h2><%= book.title %></h2>
+                    <h3><%= book.author %></h3>
+                    <br><br>
+                </div>
+            <% }) %> 
+        </div>
+    </div>
+    <div id="actorlist">
+        <h2 class="text-center">현재 True Lies에 업로드된 배우 목록</h2>
+        <br>
+        <div class="row" style="text-align:center;">
+            <% actorlist.forEach(function(actor) { %>
+                <div class="col-md-3" style="cursor:pointer;">
+                    <img src="images/avatar.png" onclick="location.href='/actors/detail/<%= actor._id %>'">
+                    <br>
+                    <h2><%= actor.name %></h2>
+                    <br><br>
+                </div>
+            <% }) %> 
+        </div>
+    </div>
+</body>
+<script>
+    showbook();
+</script>
+</html>

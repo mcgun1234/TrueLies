@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+    <script>
+        var chnumber = 0;
+
+        function add_character(){
+            chnumber++;
+            var chform = document.getElementById("chform");
+            var str = `
+            <h2>등장인물 ${chnumber}의 정보를 입력하세요</h2>
+            <br>
+            <label>이름 : <input type="text" name="name${chnumber}" required /></label>
+            <br><br>
+            <label>성별 :
+            <select name="gender${chnumber}" required>
+                <option>남성</option>
+                <option>여성</option>
+            </select></label>
+            <br><br>
+            <label>나이대 :
+            <select name="age${chnumber}" required>
+                <option>어린이</option>
+                <option>청소년</option>
+                <option>성인</option>
+                <option>중년</option>
+                <option>노인</option>
+            </select></label>
+            <br><br>
+            <label>성격유형 :
+            <select name="persontype${chnumber}" required>
+                <option>평균형</option>
+                <option>자기중심적</option>
+                <option>내성적</option>
+                <option>롤모델형</option>
+            </select></label>
+            <br>
+            `;
+            var newdiv = document.createElement('div');
+            newdiv.id = chnumber;
+            newdiv.innerHTML = str;
+            chform.appendChild(newdiv);
+            document.getElementById("chnumber").value = chnumber;
+        }
+
+        function del_character() {
+            if (chnumber > 1) {
+                var chform = document.getElementById("chform");
+                var lastdiv = document.getElementById(chnumber--);
+                chform.removeChild(lastdiv);
+                document.getElementById("chnumber").value = chnumber;
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+
+    <form method="post">
+        <div class="form-group" style="text-align:center;">
+            <h1 class="text-center">책 정보를 입력하세요</h1>
+            <br>
+            <label>책 제목 : <input type="text" name="title" required /></label>
+            <br><br>
+            <label>책 저자 : <input type="text" name="author" required /></label>
+            <br><br>
+            <hr>
+            <div id="chform">
+                <input type="hidden" id="chnumber" name="chnumber" value="1">
+            </div>
+            <br>
+            <input type="button" class="btn btn-default btn-lg" value="등장인물 추가" onclick="add_character()">
+            <input type="button" class="btn btn-default btn-lg" value="등장인물 삭제" onclick="del_character()">
+            <br><br><br>
+            <input type="submit" class="btn btn-primary btn-lg" value="책 저장">
+        </div>
+                
+    </form>
+</body>
+<script>
+    add_character();
+</script>
+</html>

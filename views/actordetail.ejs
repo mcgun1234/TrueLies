@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("./head.ejs") %>
+</head>
+<body>
+    <%- include ("./header.ejs") %>
+
+    <div style="text-align:center;">
+        <h1>배우 상세정보</h1>
+        <br>
+        <h2>이름 : <%= actor.name %></h2>
+        <h2>성별 : <%= actor.gender %></h2>
+        <h2>연령대 : <%= actor.age %></h2>
+        <h2>성격 : <%= actor.persontype %></h2>
+        <br>
+        <input type="button" class="btn btn-default btn-lg" value="배우 삭제" onclick="var con_test = confirm('정말 삭제하시겠습니까?');if(con_test == true){location.href='/actors/delete/<%= actor._id %>'}">
+        <br><br><br>
+    </div>
+</body>
+</html>
